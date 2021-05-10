@@ -46,4 +46,40 @@ class HelloGroovyWorld extends Specification {
      Discussing Spock fully would be out of scope for this presentation
      */
 
+    /*
+    Java is a statically-typed language.
+    This means we have to explicitly tell the
+    program what the data type for variables are.
+    E.g.
+    String greeting = "Hello World";
+
+    In the example above, the variable greeting has the data type of String.
+
+    In contrast to Java, Groovy is a dynamically-typed language.
+    Means that we don't have to define the type at compile time.
+    During runtime, the program will trying to figure out what the type is.
+
+    "If it walks like a duck, and quacks like a duck, it's probably a duck"
+     */
+
+    def 'Dynamic or Duck typing'() {
+
+        given: 'I have some ducks'
+        String donaldDuck = 'Donald Duck' // Explicit typing
+        def daisyDuck = 'Daisy Duck' // implicit typing
+
+        expect: 'The ducks to be the correct type'
+        donaldDuck instanceof String
+        daisyDuck instanceof String
+
+        !(donaldDuck instanceof Number)
+
+    }
+
+    /*
+    Dynamic programming gives you, the programmer a lot of power to bend rules during compile
+    time, but you're giving up the safety provided by the IDEs and compiler.
+    So use it at your own caution.
+     */
+
 }
