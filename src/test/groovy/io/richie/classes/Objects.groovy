@@ -50,6 +50,41 @@ class Objects extends Specification {
 
     /*
     Ok. let's talk about access-level modifiers a.k.a scoping for a bit.
+
+    Java has strict rules about scope and access.
+    Meaning, if a variable, method, or class is scoped as private
+    it can only be seen/accessed within the class.
+
+    Groovy works differently. You can scope things to be private,
+    but at runtime, it doesn't obey the rules.
+
+    Let's look at an example.
+     */
+
+    def 'Violation of privacy'() {
+
+        given: 'I have some food'
+        GroovyFood malaiKofta = new GroovyFood(
+                name: 'Malai Kofta',
+                calories: 700
+        )
+
+        when: 'I want to see how the calories were composed'
+        String composition = malaiKofta.foodCaloricComposition() // N.B. this method is scoped as private
+
+        then: 'The composition should be displayed'
+        println composition
+        composition.contains(malaiKofta.calories as String)
+
+    }
+
+    /*
+    As we saw above, we were still able to call foodCaloricComposition()
+    despite it being private. Keep that in mind when you're writing
+    your own methods, because there might be cases where you expect
+    private access to work, but it doesn't. We'd usually see this
+    when it comes to using Closure (lambda functions) which
+    we'll discuss later.
      */
 
 }

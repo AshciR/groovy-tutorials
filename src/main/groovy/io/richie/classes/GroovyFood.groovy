@@ -46,4 +46,8 @@ class GroovyFood {
         return name + " has " + calories + "calories";
     }
 
+    private String foodCaloricComposition() {
+        "I am composed of ${calories} calories"
+    }
+
 }
