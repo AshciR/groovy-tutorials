@@ -82,4 +82,69 @@ class HelloGroovyWorld extends Specification {
     So use it at your own caution.
      */
 
+    /*
+    Let's get our feet wet in Groovy by working with a basic data type, Strings
+    Strings are more diverse than in Java. Groovy provides us 2 ways to create Strings.
+    Let's take a look
+     */
+
+    def 'String manipulation in Groovy'() {
+
+        given: 'We have some strings'
+        String greeting = 'Hi there!' // N.B this one has single quotes
+        String greeting2 = "Hi there again!" // N.B this one has double quotes
+
+        expect:
+        greeting == 'Hi there!'
+        greeting2 == 'Hi there again!'
+
+    }
+
+    /*
+    Groovy also has a concept called G-Strings (Yea, I know awkward naming lol)
+    A G-String allows you to evaluate expressions within it.
+
+    This is great, because we can avoid concatenating Strings as we did in Java.
+    Let's looks
+     */
+
+    def 'Using values inside of G-Strings'() {
+        given: 'We have the meaning of life'
+        Integer theAnsToLife = 42
+
+        when: 'We tell someone'
+        // use ${} syntax to tell Groovy this is an expression
+        String meaningOfLife = "The meaning of life is ${theAnsToLife}"
+
+        then: 'The meaning should be correct'
+        meaningOfLife == "The meaning of life is 42"
+
+    }
+
+    /*
+    Notice how the G-String evaluated the variable for us.
+    This is more concise than what we'd have to do in Java.
+     */
+
+    /*
+    Expressions aren't limited to just a variable, we can do
+    calculations as well. Let's see.
+     */
+
+    def 'Using values inside of G-Strings part 2'() {
+        given: 'We have the meaning of life'
+        Integer theAnsToLife = 42
+
+        when: 'We tell someone two times'
+        String meaningOfLife = "The meaning of life is ${theAnsToLife * 2}"
+
+        then: 'The meaning should be correct'
+        meaningOfLife == "The meaning of life is 84" // We doubled the meaning
+
+    }
+
+    /*
+    We saw how we were able to do a calculation within the expression.
+    That's the power of the G-Strings.
+     */
 }
