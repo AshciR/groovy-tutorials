@@ -4,6 +4,8 @@ get used to the Groovy language.
 
 ## Topics
 - Similarities with Java
+  - Loops
+  - Conditional statements
 - Differences
     - Dynamic (Duck) typing
     - String manipulation/templates/G-Strings
